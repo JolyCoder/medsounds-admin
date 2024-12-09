@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  height: 56px;
+
+  border-bottom: 1px solid #a9a59a;
+  background-color: transparent;
+}
+
+.linkButton {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 46px;
+
+  cursor: pointer;
+
+  color: #f3f3f4;
+  background-color: transparent;
+}
+
+.activeLinkButton {
+  border-bottom: 1px solid #a9a59a;
+}
