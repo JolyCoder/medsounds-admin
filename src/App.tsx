@@ -1,6 +1,7 @@
 import { Outlet } from "react-router";
 import styles from "./App.module.css";
 import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
       <div className={styles.pageContainer}>
         <Outlet />
       </div>
+
+      <Footer />
     </div>
   );
 }
