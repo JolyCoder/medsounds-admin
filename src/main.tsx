@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { AddPost } from "./pages/AddPost/AddPost";
 import App from "./App";
 import { PATHS } from "./consts";
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
         element: null,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" />,
   },
 ]);
 
