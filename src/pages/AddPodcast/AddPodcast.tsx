@@ -1,6 +1,7 @@
 import { useState, type FC } from "react";
 
 import styles from "./AddPodcast.module.css";
+import { getTagsArrayFromString } from "../../utils/getTagsArrayFromString";
 
 export const AddPodcast: FC = () => {
   const [name, setName] = useState<string>("");
@@ -37,7 +38,7 @@ export const AddPodcast: FC = () => {
     }
 
     formData.set("title", name);
-    formData.set("tags", tags);
+    getTagsArrayFromString(tags).map((tag) => formData.append("tags", tag));
     formData.set("description", description);
 
     fetch("/api/podcasts", {
