@@ -5,6 +5,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { AddPost } from "./pages/AddPost/AddPost";
 import App from "./App";
 import { PATHS } from "./consts";
+import { AddPodcast } from "./pages/AddPodcast/AddPodcast";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: PATHS.ADD_PODCAST,
-        element: null,
+        element: <AddPodcast />,
       },
     ],
   },

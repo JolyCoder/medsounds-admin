@@ -2,18 +2,8 @@ import { useState, type FC } from "react";
 
 import styles from "./AddPost.module.css";
 import { Editor } from "../../components/Editor/Editor";
-
-const toBase64 = (file: File) =>
-  new Promise<string>((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = reject;
-  });
-
-const getTagsArrayFromString = (tagsString: string) => {
-  return tagsString.split(",").map((tag) => tag.trim());
-};
+import { toBase64 } from "../../utils/toBase64";
+import { getTagsArrayFromString } from "../../utils/getTagsArrayFromString";
 
 export const AddPost: FC = () => {
   const [name, setName] = useState<string>("");
