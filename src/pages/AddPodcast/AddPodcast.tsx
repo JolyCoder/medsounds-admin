@@ -44,17 +44,17 @@ export const AddPodcast: FC = () => {
       method: "POST",
       headers: {},
       body: formData,
-    })
-      .then((res) => {
+    }).then((res) => {
+      if (res.ok) {
         res.json().then(({ id }) => {
           alert(`Подкаст успешно создан. ID: ${id}`);
         });
-      })
-      .catch((err) => {
+      } else {
         alert("Произошла ошибка при создании подкаста, смотрите в консоль");
 
-        console.log(err);
-      });
+        console.log(res);
+      }
+    });
   };
 
   return (

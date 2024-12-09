@@ -35,17 +35,17 @@ export const AddPost: FC = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(createPostRequest),
-    })
-      .then((res) => {
+    }).then((res) => {
+      if (res.ok) {
         res.json().then(({ post_id }) => {
           alert(`Пост успешно создан. ID: ${post_id}`);
         });
-      })
-      .catch((err) => {
+      } else {
         alert("Произошла ошибка при создании поста, смотрите в консоль");
 
-        console.log(err);
-      });
+        console.log(res);
+      }
+    });
   };
 
   return (
