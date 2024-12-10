@@ -2,13 +2,12 @@ import { useState, type FC } from "react";
 
 import styles from "./AddPost.module.css";
 import { Editor } from "../../components/Editor/Editor";
-import { toBase64 } from "../../utils/toBase64";
 import { getTagsArrayFromString } from "../../utils/getTagsArrayFromString";
 
 export const AddPost: FC = () => {
   const [name, setName] = useState<string>("");
   const [tags, setTags] = useState<string>("");
-  const [image, setImage] = useState<string>();
+  const [image, setImage] = useState<File>();
   const [content, setContent] = useState<string>("");
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,23 +17,24 @@ export const AddPost: FC = () => {
       return;
     }
 
-    toBase64(file).then((value) => setImage(value));
+    setImage(file);
   };
 
   const handleCreatePost = () => {
-    const createPostRequest = {
-      title: name,
-      tags: getTagsArrayFromString(tags),
-      content,
-      image,
-    };
+    const formData = new FormData();
+
+    if (image) {
+      formData.set("image", image);
+    }
+
+    getTagsArrayFromString(tags).forEach((tag) => formData.append("tags", tag));
+
+    formData.set("title", name);
+    formData.set("content", content);
 
     fetch("/api/posts", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(createPostRequest),
+      body: formData,
     }).then((res) => {
       if (res.ok) {
         res.json().then(({ post_id }) => {
