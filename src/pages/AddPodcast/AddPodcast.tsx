@@ -37,13 +37,13 @@ export const AddPodcast: FC = () => {
       formData.set("image", image);
     }
 
-    formData.set("title", name);
     getTagsArrayFromString(tags).map((tag) => formData.append("tags", tag));
+
     formData.set("description", description);
+    formData.set("title", name);
 
     fetch("/api/podcasts", {
       method: "POST",
-      headers: {},
       body: formData,
     }).then((res) => {
       if (res.ok) {
@@ -94,7 +94,7 @@ export const AddPodcast: FC = () => {
       <div className={styles.inputElement}>
         <label>Аудиозапись подкаста:</label>
 
-        <input type="file" accept="audio/*" onChange={handleAudioChange} />
+        <input type="file" accept="audio/mp3" onChange={handleAudioChange} />
       </div>
 
       <button onClick={handleCreatePodcast}>Создать подкаст</button>
