@@ -4,30 +4,33 @@ import "./index.css";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { AddPost } from "./pages/AddPost/AddPost";
 import App from "./App";
-import { PATHS } from "./consts";
+import { BASENAME, PATHS } from "./consts";
 import { AddPodcast } from "./pages/AddPodcast/AddPodcast";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: PATHS.ADD_POST,
-        element: <AddPost />,
-        index: true,
-      },
-      {
-        path: PATHS.ADD_PODCAST,
-        element: <AddPodcast />,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <Navigate to="/" />,
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          path: PATHS.ADD_POST,
+          element: <AddPost />,
+          index: true,
+        },
+        {
+          path: PATHS.ADD_PODCAST,
+          element: <AddPodcast />,
+        },
+      ],
+    },
+    {
+      path: "*",
+      element: <Navigate to="/" />,
+    },
+  ],
+  { basename: BASENAME }
+);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
