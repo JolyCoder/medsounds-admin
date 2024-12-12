@@ -9,6 +9,7 @@ export const AddPost: FC = () => {
   const [tags, setTags] = useState<string>("");
   const [image, setImage] = useState<File>();
   const [content, setContent] = useState<string>("");
+  const [suggested, setSuggested] = useState<boolean>(false);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event?.target?.files?.[0];
@@ -31,6 +32,7 @@ export const AddPost: FC = () => {
 
     formData.set("title", name);
     formData.set("content", content);
+    formData.set("type", suggested ? "suggested" : "academy");
 
     fetch("/api/posts", {
       method: "POST",
@@ -60,6 +62,16 @@ export const AddPost: FC = () => {
         <label>Список тегов через запятую:</label>
 
         <input value={tags} onChange={(ev) => setTags(ev.target.value)} />
+      </div>
+
+      <div className={styles.inputElement}>
+        <label>Список тегов через запятую:</label>
+
+        <input
+          type="checkbox"
+          value={suggested ? "true" : ""}
+          onChange={(ev) => setSuggested(!!ev.target.value)}
+        />
       </div>
 
       <div className={styles.inputElement}>
