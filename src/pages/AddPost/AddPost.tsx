@@ -65,12 +65,13 @@ export const AddPost: FC = () => {
       </div>
 
       <div className={styles.inputElement}>
-        <label>Список тегов через запятую:</label>
+        <label>Предложенная новость:</label>
 
         <input
           type="checkbox"
-          value={suggested ? "true" : ""}
-          onChange={(ev) => setSuggested(!!ev.target.value)}
+          onChange={(ev) => {
+            setSuggested(ev.target.checked);
+          }}
         />
       </div>
 
