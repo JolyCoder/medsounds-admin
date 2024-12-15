@@ -32,7 +32,7 @@ export const AddPost: FC = () => {
 
     formData.set("title", name);
     formData.set("content", content);
-    formData.set("type", suggested ? "suggested" : "academy");
+    formData.set("type_", suggested ? "suggested" : "academy");
 
     fetch("/api/posts", {
       method: "POST",
