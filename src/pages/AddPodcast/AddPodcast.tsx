@@ -9,6 +9,7 @@ export const AddPodcast: FC = () => {
   const [image, setImage] = useState<File>();
   const [audio, setAudio] = useState<File>();
   const [description, setDescription] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event?.target?.files?.[0];
@@ -41,6 +42,7 @@ export const AddPodcast: FC = () => {
 
     formData.set("description", description);
     formData.set("title", name);
+    formData.set("author", author);
 
     fetch("/api/podcasts", {
       method: "POST",
@@ -64,6 +66,12 @@ export const AddPodcast: FC = () => {
         <label>Название подкаста:</label>
 
         <input value={name} onChange={(ev) => setName(ev.target.value)} />
+      </div>
+
+      <div className={styles.inputElement}>
+        <label>Авторы подкаста:</label>
+
+        <input value={author} onChange={(ev) => setAuthor(ev.target.value)} />
       </div>
 
       <div className={styles.inputElement}>
