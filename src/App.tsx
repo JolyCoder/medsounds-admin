@@ -1,7 +1,6 @@
 import { Outlet, useLocation, useNavigate } from "react-router";
 import styles from "./App.module.css";
 import { Header } from "./components/Header/Header";
-import { Footer } from "./components/Footer/Footer";
 import { useEffect } from "react";
 import { PATHS } from "./consts";
 
@@ -24,8 +23,6 @@ function App() {
       <div className={styles.pageContainer}>
         <Outlet />
       </div>
-
-      <Footer />
     </div>
   );
 }
