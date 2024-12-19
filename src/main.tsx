@@ -6,6 +6,8 @@ import { AddPost } from "./pages/AddPost/AddPost";
 import App from "./App";
 import { BASENAME, PATHS } from "./consts";
 import { AddPodcast } from "./pages/AddPodcast/AddPodcast";
+import { PostsList } from "./pages/PostsList/PostsList";
+import { PodcastsList } from "./pages/PodcastsList/PodcastsList";
 
 const router = createBrowserRouter(
   [
@@ -21,6 +23,14 @@ const router = createBrowserRouter(
         {
           path: PATHS.ADD_PODCAST,
           element: <AddPodcast />,
+        },
+        {
+          path: PATHS.POSTS_LIST,
+          element: <PostsList />,
+        },
+        {
+          path: PATHS.PODCAST_LIST,
+          element: <PodcastsList />,
         },
       ],
     },

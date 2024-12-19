@@ -31,6 +31,26 @@ export const Header: FC = () => {
       >
         Добавить подкаст
       </span>
+
+      <span
+        className={cn(
+          styles.linkButton,
+          location.pathname === PATHS.POSTS_LIST && styles.activeLinkButton
+        )}
+        onClick={() => navigate(PATHS.POSTS_LIST)}
+      >
+        Список постов
+      </span>
+
+      <span
+        className={cn(
+          styles.linkButton,
+          location.pathname === PATHS.PODCAST_LIST && styles.activeLinkButton
+        )}
+        onClick={() => navigate(PATHS.PODCAST_LIST)}
+      >
+        Список подкастов
+      </span>
     </div>
   );
 };
